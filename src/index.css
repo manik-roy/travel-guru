@@ -4,7 +4,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-top: -20px;
 }
 
 code {
@@ -22,4 +21,23 @@ code {
 a {
   cursor: pointer;
 }
+.form-title {
+  color: #818181;
+}
 
+.font-bold {
+  color: #000000 !important;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold !important;
+  font-size: 16px;
+}
+svg {
+  overflow: hidden;
+  vertical-align: middle;
+  font-size: 35px;
+  position: absolute;
+  top: 40px;
+  right: 13px;
+  color: #000000ed;
+}

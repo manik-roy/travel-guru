@@ -9,7 +9,7 @@ const LocationItem = ({ location }) => {
     <Col sm={4}>
       <Card className="bg-transparent">
         <Card.Img variant="top" className="img-fluid" src={image} />
-        <Button className="bg-transparent booking" onClick={() => history.push(`/booking?location=${id}`)} >{name}</Button>
+        <Button className="bg-transparent booking" onClick={() => history.push(`/booking/${id}`)} >{name}</Button>
       </Card>
     </Col>
   );
