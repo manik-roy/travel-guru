@@ -1,0 +1,13 @@
+.booking {
+  border-color: transparent !important;
+  outline: none !important;
+  position: absolute;
+  bottom: 25px;
+  font-weight: 700 !important;
+  font-size: 25px !important;
+}
+
+.booking:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
