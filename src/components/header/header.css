@@ -1,4 +1,4 @@
-.navbar-brand img {
+.logo {
   filter: contrast(0) brightness(250%);
 }
 
@@ -25,4 +25,11 @@
 .search-input::placeholder {
   color: #fff !important;
   opacity: 1;
+}
+
+.ml-auto.header-nav.navbar-nav a {
+  color: #000000;
+}
+.ml-auto.header-nav2.navbar-nav a {
+  color: #fff;
 }

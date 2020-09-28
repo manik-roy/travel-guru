@@ -1,20 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch, useLocation } from 'react-router-dom'
 import Booking from './components/booking/Booking';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
+import Search from './components/search/Search';
 
 function App() {
+  const location = useLocation();
+  console.log(location.pathname);
   return (
-    <Router>
-      <div className="home">
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/booking/:id" component={Booking} />
-        </Switch>
-      </div>
-    </Router>
+
+    <div className={`${location.pathname === '/' || location.pathname.includes('booking') ? "home" : ""}`}>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/booking/:id" component={Booking} />
+        <Route path="/search/:id" component={Search} />
+      </Switch>
+    </div>
+
   );
 }
 

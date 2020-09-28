@@ -27,7 +27,7 @@ const locations = [
       },
       {
         id: 2,
-        image: 'https://i.ibb.co/9Y5Mb2X/Rectangle-28.png',
+        image: 'https://i.ibb.co/R260GQJ/Rectangle-26.png',
         title: 'AR Lounge & Pool (r&r + b&b)',
         type: '4 guests  2 bedrooms  2 bed  2 baths ',
         type1: 'Wif Air conditioning Kitchen',
@@ -45,7 +45,7 @@ const locations = [
     "hotels": [
       {
         id: 0,
-        image: 'https://i.imgur.com/F5xamJp.png',
+        image: 'https://i.ibb.co/2KGXjvq/Rectangle-27.png',
         title: 'Light bright airy stylish apt & safe peaceful stay',
         type: '4 guests  2 bedrooms  2 bed  2 baths ',
         type1: 'Wif Air conditioning Kitchen',
@@ -55,7 +55,7 @@ const locations = [
       },
       {
         id: 1,
-        image: 'https://i.imgur.com/edfsYMV.png',
+        image: 'https://i.ibb.co/R260GQJ/Rectangle-26.png',
         title: 'Apartment in Lost Panorama',
         type: '4 guests  2 bedrooms  2 bed  2 baths ',
         type1: 'Wif Air conditioning Kitchen',
@@ -84,7 +84,7 @@ const locations = [
     "hotels": [
       {
         id: 0,
-        image: 'https://i.imgur.com/F5xamJp.png',
+        image: 'https://i.ibb.co/2KGXjvq/Rectangle-27.png',
         title: 'Light bright airy stylish apt & safe peaceful stay',
         type: '4 guests  2 bedrooms  2 bed  2 baths ',
         type1: 'Wif Air conditioning Kitchen',
@@ -94,7 +94,7 @@ const locations = [
       },
       {
         id: 1,
-        image: 'https://i.imgur.com/edfsYMV.png',
+        image: 'https://i.ibb.co/R260GQJ/Rectangle-26.png',
         title: 'Apartment in Lost Panorama',
         type: '4 guests  2 bedrooms  2 bed  2 baths ',
         type1: 'Wif Air conditioning Kitchen',

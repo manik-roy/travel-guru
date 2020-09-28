@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Form, Jumbotron, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import locations from '../../fakeData';
 import InputDate from './InputDate';
 import InputItem from './InputItem';
@@ -8,8 +8,8 @@ import InputItem from './InputItem';
 const Booking = () => {
   const { id } = useParams();
   const [formDate, setFormDate] = useState(new Date());
-  const [toDate, setToDate] = useState(new Date(Date.now() + 5 * 24*60*60*1000));
-
+  const [toDate, setToDate] = useState(new Date(Date.now() + 5 * 24 * 60 * 60 * 1000));
+  const history = useHistory();
   const [bookingInfo, setBookingInfo] = useState({
     location: {},
     origin: '',
@@ -28,6 +28,7 @@ const Booking = () => {
 
   const submitHandler = e => {
 
+    history.push(`/search/${id}`)
 
     e.preventDefault();
   }
