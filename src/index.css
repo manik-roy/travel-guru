@@ -15,7 +15,8 @@ code {
 );
   background-size: cover;
   color: #efefef!important;
-  height: 100vh;
+  min-height: 100vh;
+  /* height: 100vh; */
 }
 
 a {
@@ -34,7 +35,7 @@ a {
   font-size: 16px;
 }
 
-svg {
+.google svg {
   overflow: hidden;
   vertical-align: middle;
   font-size: 35px;
@@ -111,4 +112,8 @@ svg {
   right: 0;
   display: block;
   position: absolute;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  color: #efefef;
 }

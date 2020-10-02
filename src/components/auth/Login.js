@@ -149,7 +149,7 @@ const Login = () => {
           </Card>
           <div className="orr mt-2 w-75">Or</div>
           <div className="google-sign-in mt-2 w-75" onClick={googleSignIn}>
-            <span> Continue with google <img src={g} alt="google" /></span>
+            <span> Continue with google <img className="google" src={g} alt="google" /></span>
           </div>
         </Col>
       </Row>

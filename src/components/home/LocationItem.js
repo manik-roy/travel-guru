@@ -1,17 +1,14 @@
 import React from 'react';
-import { Button, Card, Col } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { Button, Card } from 'react-bootstrap';
 
-const LocationItem = ({ location }) => {
-  const history = useHistory();
-  const { name, image, id } = location;
+const LocationItem = ({ location, isActive }) => {
+  const { name, image } = location;
+
   return (
-    <Col sm={4}>
-      <Card className="bg-transparent">
-        <Card.Img variant="top" className="img-fluid" src={image} />
-        <Button className="bg-transparent booking" onClick={() => history.push(`/booking/${id}`)} >{name}</Button>
-      </Card>
-    </Col>
+    <Card className={`bg-transparent ${isActive ? 'active' : 'not-active'}`}>
+      <Card.Img variant="top" className="img-fluid" src={image} />
+      <Button className="bg-transparent booking">{name}</Button>
+    </Card>
   );
 };
 

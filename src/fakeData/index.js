@@ -113,7 +113,8 @@ const locations = [
         dollars: 44
       }
     ]
-  }
+  },
+  
 ]
 
 export default locations;
