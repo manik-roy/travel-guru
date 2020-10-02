@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import handleError from '../Input/ErrorHandler';
 import InputItem from '../Input/InputItem';
-
+import g from './g.svg'
 const Login = () => {
   const history = useHistory();
   const [newUser, setNewUser] = useState(true)
@@ -90,6 +90,10 @@ const Login = () => {
               </p>
             </Card.Body>
           </Card>
+          <div className="orr mt-2 w-75">Or</div>
+          <div className="google-sign-in mt-2 w-75">
+            <span> Continue with google <img src={g} alt="google" /></span>
+          </div>
         </Col>
       </Row>
     </Container>

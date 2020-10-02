@@ -65,3 +65,50 @@ svg {
   outline: 0;
   box-shadow: none;
 }
+
+.google-sign-in {
+  height: 40px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #bfb9ba;
+  cursor: pointer;
+}
+
+.google-sign-in img {
+  display: inline-block;
+  height: 25px;
+  width: auto;
+}
+
+.orr {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.orr::before {
+  height: 1px;
+  background: #AAAAAA;
+  width: 48%;
+  content: '';
+  top: 50%;
+  left: 0;
+  display: block;
+  position: absolute;
+}
+
+.orr::after {
+  height: 1px;
+  background: #AAAAAA;
+  width: 48%;
+  content: '';
+  top: 50%;
+  right: 0;
+  display: block;
+  position: absolute;
+}
