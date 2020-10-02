@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 
-const InputItem = ({ type, name, label, value, onChangeHandler, customClass, placeholder, ...rest }) => {
+const InputItem = ({ type, name, label, value, onChangeHandler, customClass, placeholder, error, ...rest }) => {
   return (
     <Form.Group controlId={name}>
       {label && <Form.Label className="form-title">{label}</Form.Label>}
@@ -11,7 +11,11 @@ const InputItem = ({ type, name, label, value, onChangeHandler, customClass, pla
         type={type || 'text'}
         value={value}
         onChange={(e) => onChangeHandler(e)}
+        isInvalid={!!error}
         placeholder={placeholder} />
+      <Form.Control.Feedback type="invalid">
+        {error}
+      </Form.Control.Feedback>
     </Form.Group>
   );
 };

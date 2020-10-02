@@ -48,9 +48,20 @@ svg {
   border: none;
   border-bottom: 1px solid #000;
   border-radius: 0;
+  padding: 30px 0 !important;
 }
 
 .loginInput:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.login {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.form-control.is-invalid:focus {
   outline: 0;
   box-shadow: none;
 }
