@@ -10,7 +10,7 @@ import Search from './components/search/Search';
 export const UserContext = createContext();
 function App() {
   const location = useLocation();
-  const [user, setUser] = useState(null);
+const [user, setUser] = useState(null);
   const [bookingInfo, setBookingInfo] = useState({});
 
   return (
