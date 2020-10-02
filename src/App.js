@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom'
+import { getCurrentUser } from './components/auth/HandleLogin';
 import Login from './components/auth/Login';
 import Booking from './components/booking/Booking';
 import Header from './components/header/Header';
@@ -12,7 +13,11 @@ function App() {
   const location = useLocation();
   const [user, setUser] = useState(null);
   const [bookingInfo, setBookingInfo] = useState({});
-
+  useEffect(() => {
+    getCurrentUser().then(res => {
+      setUser(res)
+    })
+  }, [])
   return (
     <UserContext.Provider value={{ user, setUser, bookingInfo, setBookingInfo }}>
       <div className={`${location.pathname === '/' || location.pathname.includes('booking') ? "home" : ""}`}>

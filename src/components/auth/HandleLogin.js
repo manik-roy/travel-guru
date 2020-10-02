@@ -108,3 +108,23 @@ const verifyEmail = () => {
   }).catch(error => {
   });
 }
+
+export const getCurrentUser = () => {
+  return new Promise((resolve) => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        const { displayName, email, photoURL, emailVerified } = user;
+        const currentUser = {
+          name: displayName,
+          email: email,
+          photo: photoURL,
+          emailVerified
+        }
+        resolve(currentUser)
+        // ...
+      } else {
+        resolve(user)
+      }
+    });
+  });
+}

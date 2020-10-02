@@ -75,6 +75,9 @@ const Login = () => {
     setUserInfo({ ...initUser })
   }, [newUser])
 
+  useEffect(() => {
+   console.log('form login');
+  }, [])
   const { firstName, lastName, email, password, confirmPassword, errors } = userInfo;
 
   if (user) {
