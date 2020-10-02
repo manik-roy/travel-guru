@@ -22,13 +22,13 @@ const Header = () => {
           <Form inline className="m-auto navBarSearchForm pl-3">
             <FormControl type="text" placeholder="Search your Destination..." className={`mr-sm-2 ${location.pathname === '/' || location.pathname.includes("/booking/") ? 'search-input' : ''}`} />
           </Form>
-          <Nav className={`ml-auto ${location.pathname.includes('/search') ? 'header-nav' : 'header-nav2'}`}>
+          <Nav className={`ml-auto ${location.pathname === '/' || location.pathname.includes("/booking/") ? 'header-nav2' : 'header-nav'}`}>
             <Nav.Link as={Link} className="px-4" to="/news">News</Nav.Link>
             <Nav.Link as={Link} className="px-4" to="/news">News</Nav.Link>
             <Nav.Link as={Link} className="px-4" to="/destination">Destination</Nav.Link>
             <Nav.Link as={Link} className="px-4" to="/blog">Blog</Nav.Link>
             <Nav.Link as={Link} className="px-4" to="/contact">Contact</Nav.Link>
-            <Nav.Link as={Link} className="px-4" to="/contact">Login</Nav.Link>
+            <Nav.Link as={Link} className="px-4" to="/login">Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

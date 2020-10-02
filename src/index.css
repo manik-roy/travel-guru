@@ -21,6 +21,7 @@ code {
 a {
   cursor: pointer;
 }
+
 .form-title {
   color: #818181;
 }
@@ -32,6 +33,7 @@ a {
   font-weight: bold !important;
   font-size: 16px;
 }
+
 svg {
   overflow: hidden;
   vertical-align: middle;
@@ -40,4 +42,15 @@ svg {
   top: 40px;
   right: 13px;
   color: #000000ed;
+}
+
+.loginInput {
+  border: none;
+  border-bottom: 1px solid #000;
+  border-radius: 0;
+}
+
+.loginInput:focus {
+  outline: 0;
+  box-shadow: none;
 }

@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Form, Jumbotron, Row } from 'react-bootst
 import { useHistory, useParams } from 'react-router-dom';
 import locations from '../../fakeData';
 import InputDate from './InputDate';
-import InputItem from './InputItem';
+import InputItem from '../Input/InputItem';
 
 const Booking = () => {
   const { id } = useParams();
@@ -48,10 +48,9 @@ const Booking = () => {
             <Card.Body>
               <Form onSubmit={submitHandler} autoComplete="off">
                 <InputItem value={bookingInfo.origin}
-                  onChangeHandler={onChangeHandler} name="origin" label="Origin" />
+                  onChangeHandler={onChangeHandler} name="origin" label="Origin" placeholder="Origin" autoFocus />
                 <InputItem value={bookingInfo.destination}
-                  onChangeHandler={onChangeHandler} name="destination" label="Destination" />
-
+                  onChangeHandler={onChangeHandler} name="destination" placeholder="Destination" label="Destination" />
                 <Form.Row>
                   <InputDate label='Form' date={formDate} setDate={setFormDate} />
                   <InputDate label='To' date={toDate} setDate={setToDate} />
