@@ -1,36 +1,74 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory, useLocation } from 'react-router-dom';
+import { UserContext } from '../../App';
 import handleError from '../Input/ErrorHandler';
 import InputItem from '../Input/InputItem';
-import g from './g.svg'
+import g from './g.svg';
+import { createUserWithEmailAndPassword, initializeFirebase, signInWithEmailAndPassword } from './HandleLogin';
+initializeFirebase()
+const initUser = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+  errors: {}
+}
+
 const Login = () => {
+  const { user, setUser } = useContext(UserContext)
   const history = useHistory();
+  const location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
+
   const [newUser, setNewUser] = useState(true)
-  const [user, setUser] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    errors: {}
-  });
+  const [userInfo, setUserInfo] = useState({ ...initUser });
 
   const onChangeHandler = e => {
-    setUser(previousState => ({ ...previousState, [e.target.name]: e.target.value }))
+    setUserInfo(previousState => ({ ...previousState, [e.target.name]: e.target.value }))
     e.persist()
   }
 
   const submitHandler = e => {
-    const errors = handleError(user);
-    setUser({ ...user, errors })
-    if (Object.keys(errors).length === 0) {
-      console.log('user Created successfully');
+    const errors = handleError(userInfo);
+    setUserInfo({ ...userInfo, errors })
+    if (Object.keys(errors).length === 0 && newUser) {
+      createUserWithEmailAndPassword({ firstName, lastName, email, password })
+        .then(res => {
+          if (res.error) {
+            setUserInfo({ ...userInfo, errors: res })
+          } else {
+            setUser({ ...res })
+            history.replace(from)
+          }
+        })
+    }
+    if (!errors.email && !errors.password) {
+      if (userInfo.password && userInfo.email && !newUser) {
+        signInWithEmailAndPassword({ email, password })
+          .then(res => {
+            if (res.error) {
+              setUserInfo({ ...userInfo, errors: res })
+            } else {
+              setUser({ ...res })
+              history.replace(from)
+            }
+          })
+      }
     }
     e.preventDefault();
   }
 
-  const { firstName, lastName, email, password, confirmPassword, errors } = user;
+  useEffect(() => {
+    setUserInfo({ ...initUser })
+  }, [newUser])
+
+  const { firstName, lastName, email, password, confirmPassword, errors } = userInfo;
+
+  if (user) {
+    return <Redirect to='/' />
+  }
   return (
     <Container className="pr-0 pt-5">
       <Row>
@@ -77,6 +115,11 @@ const Login = () => {
                     name="confirmPassword"
                     customClass="loginInput"
                     placeholder="Confirm Password" />
+                )}
+                {errors.error && (
+                  <p className="text-danger text-center  py-2">
+                    {errors.error}
+                  </p>
                 )}
                 <Button className="w-100" variant="warning" type="submit">
                   {newUser ? 'Create an Account' : 'Login'}
