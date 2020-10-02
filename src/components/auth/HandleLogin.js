@@ -65,16 +65,19 @@ export const handleGoogleSignIn = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(googleProvider)
     .then(res => {
-      const { displayName, email, photoURL } = res.user;
+      const { displayName, email, photoURL, emailVerified } = res.user;
       const user = {
         name: displayName,
         email: email,
         photo: photoURL,
+        emailVerified
       }
       return user;
     })
     .catch(error => {
-      return error;
+      const errors = {}
+      errors.error = error.message;
+      return errors;
     });
 }
 
@@ -102,8 +105,6 @@ const updateUserName = name => {
 const verifyEmail = () => {
   var user = firebase.auth().currentUser;
   user.sendEmailVerification().then(function () {
-    console.log('Successfully Email send for verify user!');
   }).catch(error => {
-    console.log('Fail to send verification Email !');
   });
 }

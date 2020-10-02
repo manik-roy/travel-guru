@@ -5,7 +5,7 @@ import { UserContext } from '../../App';
 import handleError from '../Input/ErrorHandler';
 import InputItem from '../Input/InputItem';
 import g from './g.svg';
-import { createUserWithEmailAndPassword, initializeFirebase, signInWithEmailAndPassword } from './HandleLogin';
+import { createUserWithEmailAndPassword, handleGoogleSignIn, initializeFirebase, signInWithEmailAndPassword } from './HandleLogin';
 initializeFirebase()
 const initUser = {
   firstName: '',
@@ -60,6 +60,17 @@ const Login = () => {
     e.preventDefault();
   }
 
+  const googleSignIn = () => {
+    handleGoogleSignIn()
+      .then(res => {
+        if (res.error) {
+          setUserInfo({ ...userInfo, errors: res })
+        } else {
+          setUser({ ...res })
+          history.replace(from)
+        }
+      })
+  }
   useEffect(() => {
     setUserInfo({ ...initUser })
   }, [newUser])
@@ -134,7 +145,7 @@ const Login = () => {
             </Card.Body>
           </Card>
           <div className="orr mt-2 w-75">Or</div>
-          <div className="google-sign-in mt-2 w-75">
+          <div className="google-sign-in mt-2 w-75" onClick={googleSignIn}>
             <span> Continue with google <img src={g} alt="google" /></span>
           </div>
         </Col>
