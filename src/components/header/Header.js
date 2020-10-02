@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
+import { UserContext } from '../../App';
 import './header.css';
 
 const Header = () => {
   const location = useLocation();
+  const { user, signOUtUser } = useContext(UserContext)
   return (
     <Container>
       <Navbar expand="lg" className="pt-4 text-primary">
@@ -23,12 +25,19 @@ const Header = () => {
             <FormControl type="text" placeholder="Search your Destination..." className={`mr-sm-2 ${location.pathname === '/' || location.pathname.includes("/booking/") ? 'search-input' : ''}`} />
           </Form>
           <Nav className={`ml-auto ${location.pathname === '/' || location.pathname.includes("/booking/") ? 'header-nav2' : 'header-nav'}`}>
-            <Nav.Link as={Link} className="px-4" to="/news">News</Nav.Link>
-            <Nav.Link as={Link} className="px-4" to="/news">News</Nav.Link>
-            <Nav.Link as={Link} className="px-4" to="/destination">Destination</Nav.Link>
-            <Nav.Link as={Link} className="px-4" to="/blog">Blog</Nav.Link>
-            <Nav.Link as={Link} className="px-4" to="/contact">Contact</Nav.Link>
-            <Nav.Link as={Link} className="px-4" to="/login">Login</Nav.Link>
+            <Nav.Link as={Link} className="px-4" to="/">News</Nav.Link>
+            <Nav.Link as={Link} className="px-4" to="/">News</Nav.Link>
+            <Nav.Link as={Link} className="px-4" to="/">Destination</Nav.Link>
+            <Nav.Link as={Link} className="px-4" to="/">Blog</Nav.Link>
+            <Nav.Link as={Link} className="px-4" to="/">Contact</Nav.Link>
+            {user ? (
+              <>
+                <Nav.Link className="px-4 font-weight-bold" >{user.name.split(' ')[0]}</Nav.Link>
+                <Nav.Link className="px-4" onClick={signOUtUser} >Logout</Nav.Link>
+              </>
+            ) : (
+                <Nav.Link as={Link} className="px-4" to="/login">Login</Nav.Link>
+              )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -15,7 +15,7 @@ const Home = () => {
             <h1 className="font-weight-bold">Cox's bazar</h1>
             <p>
               Cox's Bazar is a city, fishing port, tourism centre and district headquarters in southeastern Bangladesh. It is famous mostly for its long natural sandy beach, and it</p>
-            <Button variant="warning" onClick={() => history.push("/booking/1")}>Booking</Button>
+            <Button className="px-4 py-2" variant="warning" onClick={() => history.push("/booking/1")}>Booking</Button>
           </Jumbotron>
         </Col>
         <Col sm={8} xl={8}>
