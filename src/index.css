@@ -162,3 +162,10 @@ a {
   bottom: 0;
   top: 40%;
 }
+.nice-dates svg {
+  top: 54%;
+    position: absolute;
+    color: #292525;
+    right: 18px;
+    font-size: 25px;
+}
