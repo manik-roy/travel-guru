@@ -74,10 +74,8 @@ const Login = () => {
   }
 
   const googleSignIn = () => {
-    setLoading(true)
     handleGoogleSignIn()
       .then(res => {
-        setLoading(false)
         if (res.error) {
           setUserInfo({ ...userInfo, errors: res })
         } else {
