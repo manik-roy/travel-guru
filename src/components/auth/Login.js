@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { Redirect, useHistory, useLocation } from 'react-router-dom';
+import { css } from "@emotion/core";
+import FadeLoader from "react-spinners/FadeLoader";
 import { UserContext } from '../../App';
 import handleError from '../Input/ErrorHandler';
 import InputItem from '../Input/InputItem';
@@ -21,7 +23,7 @@ const Login = () => {
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
-
+  const [loading, setLoading] = useState(false)
   const [newUser, setNewUser] = useState(true)
   const [userInfo, setUserInfo] = useState({ ...initUser });
 
@@ -30,12 +32,21 @@ const Login = () => {
     e.persist()
   }
 
+  const override = css`
+  display: block;
+  margin: 0 auto;
+  display:flex;
+  color:#000;
+`;
+
   const submitHandler = e => {
     const errors = handleError(userInfo);
     setUserInfo({ ...userInfo, errors })
     if (Object.keys(errors).length === 0 && newUser) {
+      setLoading(true)
       createUserWithEmailAndPassword({ firstName, lastName, email, password })
         .then(res => {
+          setLoading(false)
           if (res.error) {
             setUserInfo({ ...userInfo, errors: res })
           } else {
@@ -46,8 +57,10 @@ const Login = () => {
     }
     if (!errors.email && !errors.password) {
       if (userInfo.password && userInfo.email && !newUser) {
+        setLoading(true)
         signInWithEmailAndPassword({ email, password })
           .then(res => {
+            setLoading(false)
             if (res.error) {
               setUserInfo({ ...userInfo, errors: res })
             } else {
@@ -61,8 +74,10 @@ const Login = () => {
   }
 
   const googleSignIn = () => {
+    setLoading(true)
     handleGoogleSignIn()
       .then(res => {
+        setLoading(false)
         if (res.error) {
           setUserInfo({ ...userInfo, errors: res })
         } else {
@@ -76,12 +91,23 @@ const Login = () => {
   }, [newUser])
 
   useEffect(() => {
-   console.log('form login');
+    console.log('form login');
   }, [])
   const { firstName, lastName, email, password, confirmPassword, errors } = userInfo;
 
   if (user) {
     return <Redirect to='/' />
+  }
+  if (loading) {
+    return (
+      <div className="sweet-loading">
+        <FadeLoader
+          css={override}
+          size={150}
+          loading={loading}
+        />
+      </div>
+    );
   }
   return (
     <Container className="pr-0 pt-5">

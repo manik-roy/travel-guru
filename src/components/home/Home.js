@@ -7,11 +7,11 @@ import { useHistory } from 'react-router-dom';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { BsArrowRight } from 'react-icons/bs';
-
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
+
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 const Home = () => {
@@ -20,9 +20,18 @@ const Home = () => {
   const [booking, setBooking] = useState({})
 
   useEffect(() => {
-    const activeItem = locations.find((loctaion, index) => index === slideIndex)
+    const activeItem = locations.find((loctaion, index) => index.toString() === slideIndex.toString())
     setBooking(activeItem)
   }, [slideIndex])
+
+  const onClickHandler = swiper => {
+    if (swiper.clickedSlide) {
+      if (swiper.clickedSlide.attributes) {
+        var a = swiper.clickedSlide.attributes.getNamedItem('data-swiper-slide-index').value;
+        setSlideIndex(a);
+      }
+    }
+  }
 
   return (
     <Container className="pr-0 mt-5 pt-5">
@@ -44,7 +53,7 @@ const Home = () => {
               disableOnInteraction: false
             }}
             loop={true}
-            onClick={(swiper) => setSlideIndex(swiper.realIndex)}
+            onClick={(swiper) => onClickHandler(swiper)}
             onSlideChange={(swiper) => setSlideIndex(swiper.realIndex)}
           >
             {locations.map(location => {

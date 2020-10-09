@@ -15,8 +15,9 @@ code {
 );
   background-size: cover;
   color: #efefef!important;
-  min-height: 100vh;
-  /* height: 100vh; */
+  background-position: center;
+  min-height: fit-content;
+  height: 100vh;
 }
 
 a {
@@ -114,6 +115,50 @@ a {
   position: absolute;
 }
 
+.swiper-container {
+  height: 500px !important;
+}
+
 .swiper-button-prev, .swiper-button-next {
-  color: #efefef;
+  top: auto !important;
+  bottom: 5% !important;
+  color: #000000;
+  background-color: #fff;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+/* Normal desktop :1200px. */
+
+@media (min-width: 1200px) and (max-width: 1500px) {
+  .home {
+    min-height: 900px;
+  }
+}
+
+/* Normal desktop :992px. */
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .home {
+    min-height: 900px;
+  }
+}
+
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+  margin-left: 65px !important;
+  left: auto;
+  right: auto;
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+  font-size: 14px;
+}
+
+.sweet-loading {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 40%;
 }

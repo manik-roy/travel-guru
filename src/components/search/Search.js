@@ -32,7 +32,7 @@ const Search = () => {
         <Col sm={6} xl={5} className="mt-4">
           <Card className="mt-5">
             <Card.Body>
-              <h2>Google map</h2>
+              <h2>Maps here</h2>
             </Card.Body>
           </Card>
         </Col>
