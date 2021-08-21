@@ -1,7 +1,5 @@
 travel site in react js with firebase auth [TRAVEL GURU](https://guraguri.netlify.app/).
 
-## Available Scripts
-
 First clone the repo, then run this commands
 ### `cd travel-guru`
 ### `npm i`
